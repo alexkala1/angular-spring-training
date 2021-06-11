@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    UserRepository repository;
+    private UserRepository repository;
 
     public List<UserEntity> getAllUsers()
     {
@@ -39,10 +39,9 @@ public class UserService {
 
     public UserEntity createOrUpdateUser(UserEntity entity) throws RecordNotFoundException
     {
-        Optional<UserEntity> user = repository.findById(entity.getId());
+        if (entity.getId() != null) {
+            Optional<UserEntity> user = repository.findById(entity.getId());
 
-        if(user.isPresent())
-        {
             UserEntity newEntity = user.get();
             newEntity.setEmail(entity.getEmail());
             newEntity.setFirstName(entity.getFirstName());
@@ -52,7 +51,8 @@ public class UserService {
             newEntity = repository.save(newEntity);
 
             return newEntity;
-        } else {
+        }
+        else {
             entity = repository.save(entity);
 
             return entity;
