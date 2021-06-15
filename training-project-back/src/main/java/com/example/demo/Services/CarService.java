@@ -1,37 +1,40 @@
 package com.example.demo.Services;
 
 import com.example.demo.Config.Exceptions.RecordNotFoundException;
+import com.example.demo.DTO.CarDTO;
 import com.example.demo.Entities.CarEntity;
+import com.example.demo.Mappers.CarMapper;
 import com.example.demo.Repositories.CarRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class CarService {
-    @Autowired
-    CarRepository repository;
+    private final CarRepository repository;
+    private final CarMapper carMapper;
 
-    public List<CarEntity> getAllCars()
+    public List<CarDTO> getAllCars()
     {
         List<CarEntity> carList = repository.findAll();
 
         if(carList.size() > 0) {
-            return carList;
+            return carMapper.carsDTO(carList);
         } else {
             return new ArrayList<>();
         }
     }
 
-    public CarEntity getCarById(Long id) throws RecordNotFoundException
+    public CarDTO getCarById(Long id) throws RecordNotFoundException
     {
         Optional<CarEntity> car = repository.findById(id);
 
         if(car.isPresent()) {
-            return car.get();
+            return carMapper.carDTO(car.get());
         } else {
             throw new RecordNotFoundException("No car record exist for given id");
         }

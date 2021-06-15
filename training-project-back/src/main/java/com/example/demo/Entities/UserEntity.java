@@ -17,11 +17,11 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="first_name")
-    private String firstName;
+    @Column(name="name")
+    private String name;
 
-    @Column(name="last_name")
-    private String lastName;
+    @Column(name="surname")
+    private String surname;
 
     @Column(name="email", nullable=false, unique = true, length=200)
     private String email;
@@ -29,7 +29,6 @@ public class UserEntity {
     @Column(name="password")
     private String password;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "User")
-    @JsonManagedReference
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<RentalEntity> rentals;
 }

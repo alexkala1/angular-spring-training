@@ -2,7 +2,9 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Config.Exceptions.RecordNotFoundException;
 import com.example.demo.Entities.RentalEntity;
+import com.example.demo.Mappers.RentalMapper;
 import com.example.demo.Services.RentalService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -11,11 +13,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/rentals")
 public class RentalController {
-    @Autowired
-    RentalService service;
+
+    private final RentalService service;
+    private final RentalMapper rentalMapper;
 
     @GetMapping
     public ResponseEntity<List<RentalEntity>> getAllRentals() {

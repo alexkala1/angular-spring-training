@@ -1,6 +1,7 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.Config.Exceptions.RecordNotFoundException;
+import com.example.demo.DTO.CarDTO;
 import com.example.demo.Entities.CarEntity;
 import com.example.demo.Services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +19,18 @@ public class CarController {
     CarService service;
 
     @GetMapping
-    public ResponseEntity<List<CarEntity>> getAllCars() {
-        List<CarEntity> list = service.getAllCars();
+    public ResponseEntity<List<CarDTO>> getAllCars() {
+        List<CarDTO> response = service.getAllCars();
 
-        return new ResponseEntity<>(list, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CarEntity> getCarById(@PathVariable("id") Long id)
+    public ResponseEntity<CarDTO> getCarById(@PathVariable("id") Long id)
             throws RecordNotFoundException {
-        CarEntity entity = service.getCarById(id);
+        CarDTO response = service.getCarById(id);
 
-        return new ResponseEntity<>(entity, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping
