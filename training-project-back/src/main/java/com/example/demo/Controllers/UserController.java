@@ -1,6 +1,7 @@
 package com.example.demo.Controllers;
 import java.util.List;
 
+import com.example.demo.Config.Exceptions.ApiRequestException;
 import com.example.demo.DTO.UserDTO;
 import com.example.demo.Mappers.UserMapper;
 import org.apache.catalina.User;
@@ -30,7 +31,7 @@ public class UserController
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable("id") Long id)
-            throws RecordNotFoundException {
+            throws ApiRequestException {
         UserDTO user = service.getUserById(id);
 
         return new ResponseEntity<>(user, new HttpHeaders(), HttpStatus.OK);
@@ -50,8 +51,8 @@ public class UserController
     }
 
 //    login
-    @GetMapping("/login")
-    public Boolean login(String email, String password) throws RecordNotFoundException{
-        return service.login(email, password);
+    @PostMapping("/login")
+    public UserDTO login(@RequestBody UserDTO user) throws ApiRequestException {
+        return service.login(user.getEmail(), user.getPassword());
     }
 }

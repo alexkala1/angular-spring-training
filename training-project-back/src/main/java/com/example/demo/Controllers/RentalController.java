@@ -5,7 +5,6 @@ import com.example.demo.Entities.RentalEntity;
 import com.example.demo.Mappers.RentalMapper;
 import com.example.demo.Services.RentalService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

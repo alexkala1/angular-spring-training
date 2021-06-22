@@ -1,33 +1,40 @@
-<mat-card>
-  <mat-card-title>Welcome</mat-card-title>
-  <mat-card-content>
-    <form>
-      <mat-form-field class="full-width-input">
-        <mat-label>Enter your email</mat-label>
-        <input
-          matInput
-          placeholder="pat@example.com"
-          [formControl]="email"
-          required
-        />
-        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
-      </mat-form-field>
+<div fxLayout="row" fxLayoutAlign="center center" style="width: 100vw;">
+  <mat-card fxFlex="40">
+    <mat-card-title>Welcome</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field class="full-width-input">
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            formControlName="email"
+            required
+          />
+        </mat-form-field>
 
-      <mat-form-field class="full-width-input">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" />
-        <button
-					class="show-hide-password"
-          mat-icon-button
-          matSuffix
-          (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
-        >
-          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-        </button>
-      </mat-form-field>
-			<button mat-raised-button color="primary" type="submit">Login</button>
-    </form>
-  </mat-card-content>
-</mat-card>
+        <mat-form-field class="full-width-input">
+          <mat-label>Enter your password</mat-label>
+          <input
+            formControlName="password"
+            matInput
+            [type]="hide ? 'password' : 'text'"
+          />
+          <button
+            class="show-hide-password"
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+				<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+				<h4>Not registered? <a [routerLink]="['/register']" routerLinkActive="router-link-active" style="color: blue;">Register now</a></h4>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

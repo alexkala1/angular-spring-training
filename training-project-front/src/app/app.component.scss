@@ -1,4 +1,16 @@
-.mat-grid-tile {
-	justify-content: center;
-	align-items: center;
+.root-container {
+	min-height: 100vh;
+	min-width: 100vw;
+}
+
+.application-header	{
+	min-height: 100vh;
+}
+.application-content	{
+	min-width: 100vw;
+	min-height: 100vh;
+}
+
+.application-footer	{
+	min-width: 100vw;
 }

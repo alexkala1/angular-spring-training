@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-title> {{ brand }} {{ model }} </mat-card-title>
+  <mat-card-content fxLayout="column">
+    <div>Horse Power: {{ horsePower }}</div>
+    <div>Engine: {{ engine }}</div>
+    <div>Color: {{ color }}</div>
+    <div>Mileage: {{ mileage }}</div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Add to cart</button>
+  </mat-card-actions>
+</mat-card>

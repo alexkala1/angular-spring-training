@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100%; width: 100vw;">
+  <mat-card fxFlex="40">
+    <mat-card-title>{{ name }} {{ surname }}'s profile</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+        <mat-form-field class="full-width-input">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required />
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="name" required />
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="surname" required />
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">
+          Update
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

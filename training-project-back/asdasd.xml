@@ -1,0 +1,29 @@
+<createTable tableName="SEC_ROLE">
+            <column name="id" type="${type.varchar}">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="${type.varchar}">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+<createTable tableName="SEC_USER_ROLE">
+            <column name="user_id" type="${type.varchar}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="${type.varchar}">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="SEC_USER_ROLE"
+                                 constraintName="FK_AUTH_USER_USER_ROLE"
+                                 referencedColumnNames="id"
+                                 referencedTableName="SEC_AUTH_USER"
+                                 onDelete="CASCADE"/>
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="SEC_USER_ROLE"
+                                 constraintName="FK_ROLE_USER_ROLE"
+                                 referencedColumnNames="id"
+                                 referencedTableName="SEC_ROLE"
+                                 onDelete="CASCADE"/>
+																 

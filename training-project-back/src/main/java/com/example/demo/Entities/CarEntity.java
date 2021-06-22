@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -31,4 +33,12 @@ public class CarEntity {
 
     @Column(name="mileage")
     private Integer mileage;
+
+    @ManyToMany
+    @JoinTable(
+            name = "cars_types",
+            joinColumns = @JoinColumn(name="car_entity_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "types_entity_id", referencedColumnName = "id")
+    )
+    private Set<CarEntity> types;
 }

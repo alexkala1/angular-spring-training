@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demo.Config.Exceptions.ApiRequestException;
 import com.example.demo.Config.Exceptions.RecordNotFoundException;
 import com.example.demo.DTO.UserDTO;
 import com.example.demo.Entities.UserEntity;
@@ -30,27 +31,32 @@ public class UserService {
     }
 
     //    login
-    public Boolean login(String email, String password) throws RecordNotFoundException {
+    public UserDTO login(String email, String password) throws ApiRequestException {
 
         Optional<UserEntity> user = repository.findByEmail(email);
 
         if (user.isPresent()) {
             UserEntity checkUser = user.get();
 
-            return checkUser.getPassword().equals(password);
+            if (checkUser.getPassword().equals(password)) {
+                return userMapper.loggedInUser(user.get());
+            }
+            else {
+                throw new ApiRequestException("Password does not match");
+            }
         } else {
-            throw new RecordNotFoundException("User with email" + email + "was not found.");
+            throw new ApiRequestException("User with email " + email + " was not found.");
         }
 
     }
 
-    public UserDTO getUserById(Long id) throws RecordNotFoundException {
+    public UserDTO getUserById(Long id) throws ApiRequestException {
         Optional<UserEntity> user = repository.findById(id);
 
         if (user.isPresent()) {
             return userMapper.userDTO(user.get());
         } else {
-            throw new RecordNotFoundException("No user record exist for given id");
+            throw new ApiRequestException("No user record exist for given id");
         }
     }
 

@@ -7,12 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserDTO {
-    @JsonProperty("name")
+    private Long id;
     private String name;
-
-    @JsonProperty("surname")
     private String surname;
-
-    @JsonProperty("email")
     private String email;
+    private String password;
 }

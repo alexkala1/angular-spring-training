@@ -2,9 +2,7 @@ package com.example.demo.Mappers;
 
 import com.example.demo.DTO.UserDTO;
 import com.example.demo.Entities.UserEntity;
-import org.mapstruct.Mapper;
-import org.mapstruct.NullValueCheckStrategy;
-import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.*;
 
 import java.util.List;
 
@@ -12,6 +10,10 @@ import java.util.List;
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, uses = {RentalMapper.class})
 public interface UserMapper {
     UserDTO userDTO(UserEntity user);
+
+    @Named("loggedInUser")
+    @Mapping(target = "password", ignore = true)
+    UserDTO loggedInUser(UserEntity user);
 
     List<UserDTO> userListDTO(List<UserEntity> userList);
 }
