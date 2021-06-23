@@ -3,11 +3,12 @@
     fxFlex="20"
     style="padding: 16px; margin: 16px"
     *ngFor="let car of cars"
-    [brand]="car.brand"
-    [model]="car.model"
-    [horsePower]="car.horsePower"
-    [engine]="car.engine"
-    [color]="car.color"
-    [mileage]="car.mileage"
+    [car]="car"
   ></app-car-card>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="center center" style="width: 100vw">
+  <button (click)="applyDiscountCode()" mat-raised-button color="primary">
+    Apply Discount
+  </button>
 </div>
