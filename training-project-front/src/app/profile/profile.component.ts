@@ -45,9 +45,10 @@ export class ProfileComponent implements OnInit {
 		const name = this.profileForm.get('name')?.value
 		const surname = this.profileForm.get('surname')?.value
 		const email = this.profileForm.get('email')?.value
+		const password = this.profileForm.get('password')?.value
 
     this.profileService
-      .updateProfile(name, surname, email)
+      .updateProfile(name, surname, email, password)
       .subscribe(
         (response) => {
 					sessionStorage.removeItem('name')
