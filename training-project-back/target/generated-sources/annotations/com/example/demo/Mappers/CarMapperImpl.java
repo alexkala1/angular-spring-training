@@ -2,6 +2,7 @@ package com.example.demo.Mappers;
 
 import com.example.demo.DTO.CarDTO;
 import com.example.demo.Entities.CarEntity;
+import com.example.demo.Entities.TypeEntity;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-06-22T17:04:21+0300",
+    date = "2021-06-23T09:47:24+0300",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 14.0.2 (Private Build)"
 )
 @Component
@@ -46,9 +47,9 @@ public class CarMapperImpl implements CarMapper {
         if ( car.getMileage() != null ) {
             carDTO.setMileage( car.getMileage() );
         }
-        Set<CarEntity> set = car.getTypes();
+        Set<TypeEntity> set = car.getTypes();
         if ( set != null ) {
-            carDTO.setTypes( new HashSet<CarEntity>( set ) );
+            carDTO.setTypes( new HashSet<TypeEntity>( set ) );
         }
 
         return carDTO;

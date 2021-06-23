@@ -37,8 +37,8 @@ public class CarEntity {
     @ManyToMany
     @JoinTable(
             name = "cars_types",
-            joinColumns = @JoinColumn(name="car_entity_id", referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name="cars_entity_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "types_entity_id", referencedColumnName = "id")
     )
-    private Set<CarEntity> types;
+    private Set<TypeEntity> types;
 }

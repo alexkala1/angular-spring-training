@@ -1,6 +1,7 @@
 package com.example.demo.DTO;
 
 import com.example.demo.Entities.CarEntity;
+import com.example.demo.Entities.TypeEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,5 +17,5 @@ public class CarDTO {
     private Integer engine;
     private String color;
     private Integer mileage;
-    private Set<CarEntity> types;
+    private Set<TypeEntity> types;
 }

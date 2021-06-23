@@ -40,8 +40,7 @@ public class UserService {
 
             if (checkUser.getPassword().equals(password)) {
                 return userMapper.loggedInUser(user.get());
-            }
-            else {
+            } else {
                 throw new ApiRequestException("Password does not match");
             }
         } else {
@@ -68,7 +67,9 @@ public class UserService {
             newEntity.setEmail(entity.getEmail());
             newEntity.setName(entity.getName());
             newEntity.setSurname(entity.getSurname());
-            newEntity.setPassword(entity.getPassword());
+
+            if (entity.getPassword() != null)
+                newEntity.setPassword(entity.getPassword());
 
             newEntity = repository.save(newEntity);
 
