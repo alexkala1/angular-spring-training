@@ -1,13 +1,20 @@
 <mat-card>
-  <mat-card-title> {{ brand }} {{ model }} </mat-card-title>
+  <mat-card-title> {{ car?.brand }} {{ car?.model }} </mat-card-title>
   <mat-card-content fxLayout="column">
-    <div>Horse Power: {{ horsePower }}</div>
-    <div>Engine: {{ engine }}</div>
-    <div>Color: {{ color }}</div>
-    <div>Mileage: {{ mileage }}</div>
+    <div>Horse Power: {{ car?.horsePower }}</div>
+    <div>Engine: {{ car?.engine }}</div>
+    <div>Color: {{ car?.color }}</div>
+    <div>Mileage: {{ car?.mileage }}</div>
+    <div fxLayout="row" fxLayoutAlign="start center">Type: 
+			<mat-chip-list>
+				<mat-chip color="primary" selected *ngFor="let type of car.types" style="min-height: 20px;">
+					{{ type.name }}
+				</mat-chip>
+			</mat-chip-list>
+		</div>
   </mat-card-content>
   <mat-divider></mat-divider>
   <mat-card-actions>
-    <button mat-raised-button color="primary">Add to cart</button>
+    <button (click)="addToCart(car)" mat-raised-button color="primary">Add to cart</button>
   </mat-card-actions>
 </mat-card>

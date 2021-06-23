@@ -1,22 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Car } from 'src/app/interface/car';
 
 @Component({
   selector: 'app-car-card',
   templateUrl: './car-card.component.html',
-  styleUrls: ['./car-card.component.scss']
+  styleUrls: ['./car-card.component.scss'],
 })
 export class CarCardComponent implements OnInit {
+  @Input() car!: Car;
 
-	@Input() brand: string | undefined;
-	@Input() model: string | undefined;
-	@Input() horsePower: string | undefined;
-	@Input() engine: string | undefined;
-	@Input() color: string | undefined;
-	@Input() mileage: string | undefined;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  addToCart(car: Car): string {
+    return `${car.brand} ${car.model} was added to cart`;
   }
-
 }
