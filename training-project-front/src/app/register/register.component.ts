@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-	error = '';
+  error = '';
   registerForm = new FormGroup({
     name: new FormControl(''),
     surname: new FormControl(''),
@@ -18,9 +18,14 @@ export class RegisterComponent implements OnInit {
     passwordConfirm: new FormControl(''),
   });
 
-  constructor(private router: Router, private registerService: RegisterService) {}
+  constructor(
+    private router: Router,
+    private registerService: RegisterService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (sessionStorage.getItem('isLoggedIn')) this.router.navigate(['/']);
+  }
 
   register(): void {
     const name = this.registerForm.get('name')?.value;
@@ -30,7 +35,7 @@ export class RegisterComponent implements OnInit {
 
     this.registerService.registerUser(name, surname, email, password).subscribe(
       (response) => this.router.navigate(['/']),
-      (error) => this.error = error.error.message
+      (error) => (this.error = error.error.message)
     );
   }
 }
