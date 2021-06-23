@@ -1,7 +1,19 @@
 <div style="height: 100vh">
   <mat-sidenav-container fxFlexFill fxLayout="column">
-    <mat-sidenav mode="over" #sidenav position="start" fxLayout="column" style="padding: 8px;">
-      <div fxLayout="column" style="min-width: 300px" fxLayoutAlign="start center">left panel</div>
+    <mat-sidenav
+      mode="over"
+      #sidenav
+      position="start"
+      fxLayout="column"
+      style="padding: 8px"
+    >
+      <div
+        fxLayout="column"
+        style="min-width: 300px"
+        fxLayoutAlign="start center"
+      >
+        left panel
+      </div>
     </mat-sidenav>
     <mat-sidenav-content
       fxLayout="column"
@@ -13,7 +25,7 @@
         color="primary"
         fxLayout="row"
         fxLayoutAlign="space-between center"
-				[style.visibility]="isLoggedIn ? 'visible' : 'hidden'"
+        [style.visibility]="authService.isLoggedIn() ? 'visible' : 'hidden'"
       >
         <div fxLayoutAlign="start center">
           <button mat-icon-button (click)="sidenav.toggle()">
@@ -21,18 +33,34 @@
           </button>
           Car Rental app
         </div>
-        <div>
-          <button mat-button [matMenuTriggerFor]="menu">{{ fullName }}</button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item [routerLink]="['/profile']" routerLinkActive="router-link-active" >Profile</button>
-            <button mat-menu-item (click)="logout()">Logout</button>
-          </mat-menu>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+					<!-- <div fxLayout="column" fxLayoutAlign="space-between center">
+						<mat-icon>shopping_cart</mat-icon>
+						<mat-chip-list>
+							<mat-chip color="accent" selected>1</mat-chip>
+						</mat-chip-list>
+					</div> -->
+          <div>
+            <button mat-button [matMenuTriggerFor]="menu">
+              {{ fullName }}
+            </button>
+            <mat-menu #menu="matMenu">
+              <button
+                mat-menu-item
+                [routerLink]="['/profile']"
+                routerLinkActive="router-link-active"
+              >
+                Profile
+              </button>
+              <button mat-menu-item (click)="logout()">Logout</button>
+            </mat-menu>
+          </div>
         </div>
       </mat-toolbar>
       <!-- end toolbar -->
-			<main>
-				<router-outlet></router-outlet>
-			</main>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
       <app-footer class="application-footer"></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>

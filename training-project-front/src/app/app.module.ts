@@ -25,6 +25,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CarCardComponent } from './components/car-card/car-card.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -46,8 +47,9 @@ import { CarCardComponent } from './components/car-card/car-card.component';
     MatMenuModule,
     MatCardModule,
     MatIconModule,
+		MatChipsModule,
     FormsModule,
-		MatDividerModule,
+    MatDividerModule,
     ReactiveFormsModule,
     MatSidenavModule,
     MatButtonModule,
