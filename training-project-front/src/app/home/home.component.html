@@ -4,6 +4,7 @@
     style="padding: 16px; margin: 16px"
     *ngFor="let car of cars"
     [car]="car"
+		(selectedCar)="onSelectedCar(car)"
   ></app-car-card>
 </div>
 

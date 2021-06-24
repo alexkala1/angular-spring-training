@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Car } from 'src/app/interface/car';
 
 @Component({
@@ -8,6 +8,7 @@ import { Car } from 'src/app/interface/car';
 })
 export class CarCardComponent implements OnInit {
   @Input() car!: Car;
+	@Output() selectedCar = new EventEmitter<Car>()
 
   constructor() {}
 
@@ -16,4 +17,8 @@ export class CarCardComponent implements OnInit {
   addToCart(car: Car): string {
     return `${car.brand} ${car.model} was added to cart`;
   }
+
+	onSelected() {
+		this.selectedCar.emit(this.car)
+	}
 }

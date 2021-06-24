@@ -35,11 +35,15 @@ export class HomeComponent implements OnInit {
   }
 
   applyDiscountCode(): void {
-    this.children.forEach((child) => {
+    this.children.toArray().forEach((child) => {
 			if (child.car.mileage && !this.discountCodeApplied)
 				child.car.mileage /= 2
 		});
 
 		this.discountCodeApplied = true
   }
+
+	onSelectedCar(car: Car): void {
+		console.log(car)
+	}
 }
