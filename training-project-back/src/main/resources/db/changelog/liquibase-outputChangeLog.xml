@@ -100,5 +100,40 @@
             <column name="name" value="hatchback"/>
         </insert>
     </changeSet>
+    <changeSet author="alex" id="refactor-database-modeling">
+        <addColumn tableName="cars">
+            <column name="price" type="FLOAT(12)" />
+        </addColumn>
+        <renameColumn tableName="rentals" oldColumnName="price" newColumnName="total_price" columnDataType="FLOAT(12)" />
+<!--        <addColumn tableName="users">-->
+<!--            <column name="rentals"/>-->
+<!--        </addColumn>-->
+<!--        <addColumn tableName="rentals">-->
+<!--            <column name="isCart"/>-->
+<!--        </addColumn>-->
+    </changeSet>
+    <changeSet author="alex" id="one-to-many-rentals-cars">
+        <createTable tableName="rentals_cars">
+            <column name="rentals_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cars_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createIndex indexName="car-index" tableName="rentals_cars">
+            <column name="cars_id"/>
+        </createIndex>
+        <createIndex indexName="rental-index" tableName="rentals_cars">
+            <column name="rentals_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="alex" id="fix-one-to-many-columns">
+        <renameColumn tableName="rentals_cars" oldColumnName="rentals_id" newColumnName="rental_entity_id" columnDataType="BIGINT" />
+        <renameColumn tableName="rentals_cars" oldColumnName="cars_id" newColumnName="car_entity_id" columnDataType="BIGINT" />
+    </changeSet>
+    <changeSet author="alex" id="refix-one-to-many-columns">
+        <renameColumn tableName="rentals_cars" oldColumnName="car_entity_id" newColumnName="cars_id" columnDataType="BIGINT" />
+    </changeSet>
 
 </databaseChangeLog>

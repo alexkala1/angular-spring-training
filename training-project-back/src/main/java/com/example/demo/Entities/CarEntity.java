@@ -34,6 +34,9 @@ public class CarEntity {
     @Column(name="mileage")
     private Integer mileage;
 
+    @Column (name = "price")
+    private Float price;
+
     @ManyToMany
     @JoinTable(
             name = "cars_types",

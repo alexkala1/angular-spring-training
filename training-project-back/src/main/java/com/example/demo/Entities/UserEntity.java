@@ -10,23 +10,23 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="surname")
+    @Column(name = "surname")
     private String surname;
 
-    @Column(name="email", nullable=false, unique = true, length=200)
+    @Column(name = "email", nullable = false, unique = true, length = 200)
     private String email;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

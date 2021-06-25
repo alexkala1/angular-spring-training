@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,6 +25,9 @@ public class RentalEntity {
     @Column(name = "rental_to")
     private Date to;
 
-    @Column(name = "price")
-    private Float price;
+    @Column(name = "total_price")
+    private Float total_price;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<CarEntity> cars;
 }

@@ -55,6 +55,7 @@ public class CarService {
             newEntity.setEngine(entity.getEngine());
             newEntity.setColor(entity.getColor());
             newEntity.setMileage(entity.getMileage());
+            newEntity.setPrice(entity.getPrice());
 
             newEntity = carRepository.save(newEntity);
 

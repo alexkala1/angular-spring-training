@@ -46,7 +46,8 @@ public class RentalService {
 
         newEntity.setFrom(entity.getFrom());
         newEntity.setTo(entity.getTo());
-        newEntity.setPrice(entity.getPrice());
+        newEntity.setTotal_price(entity.getTotal_price());
+        newEntity.setCars(entity.getCars());
 
         return newEntity;
     }

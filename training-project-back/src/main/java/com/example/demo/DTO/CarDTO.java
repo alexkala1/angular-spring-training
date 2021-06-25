@@ -17,5 +17,6 @@ public class CarDTO {
     private Integer engine;
     private String color;
     private Integer mileage;
+    private Float price;
     private Set<TypeEntity> types;
 }
