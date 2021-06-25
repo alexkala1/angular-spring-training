@@ -2,12 +2,12 @@ This is a standard CRUD application using spring-boot to create the API and angu
 for training purposes
 
 Tasks  
-[] Login page (boolean true/false)  
-[] Home Page -> Αυτοκινητα(Mat-card)  
+[*] Login page (boolean true/false)  
+[*] Home Page -> Αυτοκινητα(Mat-card)  
 [] Επιλογή αυτοκινήτων που θα νοικιασει  
-[] Registration page  
-[] One to many User -> Cars  
-[] Many to Many ->  
-[] Flex - Material (Responsive)  
+[*] Registration page  
+[*] One to many User -> Cars  
+[*] Many to Many -> cars -> types  
+[*] Flex - Material (Responsive)  
 [] LazyLoading module -> Angular  
-[] Custom Exception Handler (Spring boot) -> Angular(Interceptor handling errors)  
+[*] Custom Exception Handler (Spring boot) -> Angular(Interceptor handling errors)  
